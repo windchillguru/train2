@@ -1,0 +1,37 @@
+<%@ taglib prefix="jca" uri="http://www.ptc.com/windchill/taglib/components" %>
+<%@ page import="com.ptc.windchill.rd.service.ReceivedDeliveryHelper,wt.util.HTMLEncoder" %>
+<%@ include file="/netmarkets/jsp/components/beginWizard.jspf" %>
+<%@ include file="/netmarkets/jsp/components/includeWizBean.jspf" %>
+
+<%
+  HashMap previewMappingValues = ReceivedDeliveryHelper.getPreviewMappingPanelParameters(commandBean);
+  String context = (String) previewMappingValues.get("context");
+  String rdOID = (String) previewMappingValues.get("rdOID");
+
+  String finalLogBuffer = (String) previewMappingValues.get("finalLogBuffer");
+  finalLogBuffer = HTMLEncoder.encodeForJavascript(finalLogBuffer);
+
+  String extendedLogBuffer = (String) previewMappingValues.get("extendedLogBuffer");
+  extendedLogBuffer = HTMLEncoder.encodeForJavascript(extendedLogBuffer);
+
+  String soid = (String) previewMappingValues.get("soid");
+  String needContextMapping = (String) previewMappingValues.get("needContextMapping");
+  String disableButton = (String) previewMappingValues.get("disableButton");
+
+  request.setAttribute("context", context);
+  request.setAttribute("rdOID", rdOID);
+  request.setAttribute("finalLogBuffer", finalLogBuffer);
+  request.setAttribute("extendedLogBuffer", extendedLogBuffer);
+  request.setAttribute("soid", soid);
+  request.setAttribute("needContextMapping", needContextMapping);
+  request.setAttribute("disableButton", disableButton);
+
+%>
+<jca:initializeItem operation="${createBean.edit}"/>
+
+<jca:wizard helpSelectorKey="ReceivedDeliveryPreviewMap" buttonList="OKButton">
+  <jca:wizardStep action="setPreviewMappingAttributesStep" type="rd"/>
+</jca:wizard>
+
+
+<%@include file="/netmarkets/jsp/util/end.jspf" %>

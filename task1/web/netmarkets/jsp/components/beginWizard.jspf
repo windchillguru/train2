@@ -1,0 +1,18 @@
+<% request.setAttribute("isWizard", "true"); %>
+<%@ page import="com.ptc.core.components.servlets.JCAPageModel" %>
+
+<%
+
+  JCAPageModel jcaPageModelWizard = (JCAPageModel) request.getAttribute("jcaPageModel");
+  if (jcaPageModelWizard != null) {
+	jcaPageModelWizard.setFormAction(jcaPageModelWizard.getWizardAction());
+	jcaPageModelWizard.setWizard(true);
+	jcaPageModelWizard.setShowHeader(false);
+  }
+%>
+
+<%@ include file="/netmarkets/jsp/util/beginPopup.jspf" %>
+
+<%@ include file="/netmarkets/jsp/util/clientLogger.jspf" %>
+
+<SCRIPT type="text/javascript" SRC="netmarkets/javascript/components/multivalueinputcomponents.js"></SCRIPT>

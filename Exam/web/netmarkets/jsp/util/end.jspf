@@ -1,0 +1,82 @@
+<c:if test="${bNotJson}">
+  <%--
+	 //CONTENT_AREA comment marks the begin and end of the content area for DHTML content switching
+	 //  (for example, switching the 3rd level nav content without refreshing the page)
+  --%><!--CONTENT_AREA-->
+</c:if>
+
+<%
+  } // end if !jcaPageModel.isClosingPopupDialog() starting in begin.jspf
+  }
+  catch
+  (
+  Throwable
+  t
+  )
+  {
+%><tags:renderError throwable="<%=t%>" pageModel="${jcaPageModel}"/><%
+  }
+  finally
+  {
+%>
+<c:if test="${bNotJson}">
+  <c:if test="${!jcaPageModel.escaping}">
+	<c:if test="${nmcontext.jsp_level == 1}">
+	  <c:if test="${nmcontext.bodyend}">
+		<%
+		  wt
+		  .
+		  util
+		  .
+		  jmx
+		  .
+		  ServletRequestStats
+		  .
+		  outputAsHtmlIfApprop
+		  (
+		  request
+		  ,
+		  out
+		  )
+		  ;
+		%>
+		</FORM>
+		<c:if test="${!JCA_AJAX_REQ}">
+		  </BODY></HTML>
+		</c:if>
+		<c:set target="${nmcontext}" property="bodyend_rendered" value="${true}"/>
+		<c:if test="${not empty sessionBean}">
+		  <%
+			sessionBean
+			.
+			getStorage
+			(
+			)
+			.
+			remove
+			(
+			"multiSelect"
+			)
+			;
+		  %>
+		</c:if>
+	  </c:if>
+	</c:if>
+	<% nmcontext
+	  .
+	  decreaseJspLevel
+	  (
+	  )
+	  ;%>
+  </c:if>
+</c:if>
+<%
+  } // end try starting in begin.jspf
+  } // end app : if starting in begin.jspf%>
+
+<c:if test="${bNotJson}">
+  <!-- negate onunload cancel request, page load completed -->
+  <script type="text/javascript">
+      pageLoadComplete = true;
+  </script>
+</c:if>

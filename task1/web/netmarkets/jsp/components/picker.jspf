@@ -1,0 +1,20 @@
+<%
+  String pickedDataFetcher = request.getParameter("pickedDataFetcher");
+  if (pickedDataFetcher == null || pickedDataFetcher.trim().equals("")) {
+	pickedDataFetcher = "netmarkets/jsp/components/defaultPickedDataFetcher.jsp";
+  }
+%>
+
+
+<%@page import="wt.util.HTMLEncoder" %>
+<input type="hidden" name="pickerCallback"
+	   value="<%=HTMLEncoder.encodeForHTMLAttribute(request.getParameter("pickerCallback"))%>"/>
+<input type="hidden" name="pickedAttributes"
+	   value="<%=HTMLEncoder.encodeForHTMLAttribute(request.getParameter("pickedAttributes"))%>"/>
+<input type="hidden" name="pickedDataFetcher" value="<%=HTMLEncoder.encodeForHTMLAttribute(pickedDataFetcher)%>"/>
+
+<script type="text/javascript">
+    window.pickerCallback = "<%=HTMLEncoder.encodeForJavascript(request.getParameter("pickerCallback"))%>";
+    window.pickedAttributes = "<%=HTMLEncoder.encodeForJavascript(request.getParameter("pickedAttributes"))%>";
+    window.pickedDataFetcher = "<%=HTMLEncoder.encodeForJavascript(request.getParameter("pickedDataFetcher"))%>";
+</script>

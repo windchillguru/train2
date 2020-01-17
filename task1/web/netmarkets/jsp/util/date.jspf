@@ -1,0 +1,58 @@
+<%@ page import="java.util.Locale"
+%>
+<%@ page import="java.util.ResourceBundle"
+%>
+<%@ page import="java.util.TimeZone"
+%>
+<%@ page import="wt.util.WTStandardDateFormat"
+%>
+<%@ page import="com.ptc.netmarkets.util.misc.NmDate"
+%>
+<%@ page import="com.ptc.netmarkets.util.misc.miscResource"
+%>
+<%
+  final String DATE_RESOURCE = "com.ptc.netmarkets.util.misc.miscResource";
+
+  String formattedString = "";
+  NmDate date = dateBean.getDate();
+  if (date != null && date.getDate() != null) {
+	Locale locale = localeBean.getLocale();
+	TimeZone localTimeZone = sessionBean.getTimeZone();
+	ResourceBundle miscRB = ResourceBundle.getBundle(DATE_RESOURCE, locale);
+	String formatString = null;
+	switch (date.getDisplayType()) {
+	  case 0:
+		formatString = miscRB.getString(miscResource.SHORT_DATE_TIME);
+		break;
+	  case 1:
+		formatString = miscRB.getString(miscResource.SHORT_DATE);
+		break;
+	  case 2:
+		formatString = miscRB.getString(miscResource.LONG_DATE_TIME);
+		break;
+	  case 3:
+		formatString = miscRB.getString(miscResource.LONG_DATE);
+		break;
+	  case 4:
+		formatString = miscRB.getString(miscResource.TIME);
+		break;
+	  case 5:
+		formatString = miscRB.getString(miscResource.STANDARD_DATE_TIME);
+		break;
+	  case 6:
+		formatString = miscRB.getString(miscResource.STANDARD_DATE);
+		break;
+	  case 7:
+		formatString = miscRB.getString(miscResource.SHORT_STANDARD_DATE_FORMAT);
+		break;
+	  case 8:
+		formatString = miscRB.getString(miscResource.INPUT_DATE);
+		break;
+	  case 9:
+		formatString = miscRB.getString(miscResource.STANDARD_DATE_TIME_ZONE);
+		break;
+	}
+	formattedString = WTStandardDateFormat.format(date.getDate(), formatString, locale, localTimeZone);
+  }
+  out.print(formattedString);
+%>

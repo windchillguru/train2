@@ -1,0 +1,5 @@
+#add for pg
+ext.example.pg.model=PGMemberLink
+ext.example.pg.model=InformationNoSeq
+ext.example.pg.model=PGGroup
+ext.example.pg.model=PGInformation

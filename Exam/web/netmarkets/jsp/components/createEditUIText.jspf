@@ -1,0 +1,9 @@
+<%@ taglib uri="http://www.ptc.com/windchill/taglib/fmt" prefix="fmt"
+%>
+
+<fmt:setLocale value="${localeBean.locale}"/>
+<fmt:setBundle basename="com.ptc.core.ui.componentRB"/>
+<fmt:message var="attributesTableHeader" key="ATTRIBUTES_TABLE_HEADER"/>
+<fmt:message var="typePickerLabel" key="TYPE_PICKER_LABEL"/>
+<fmt:message var="keepCheckedOutLabel" key="KEEP_CHECKED_OUT_CHECKBOX_LABEL"/>
+

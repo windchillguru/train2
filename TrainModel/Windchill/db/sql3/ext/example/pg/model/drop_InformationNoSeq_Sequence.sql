@@ -1,0 +1,1 @@
+exec WTPK.dropSequence('InformationNoSeq')

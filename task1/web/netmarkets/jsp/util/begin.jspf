@@ -1,0 +1,81 @@
+<%@ page contentType="text/html; charset=UTF-8"
+		 import="com.ptc.netmarkets.util.beans.NmCommandBean"
+%>
+<%@ taglib uri="http://www.ptc.com/windchill/taglib/components" prefix="jca"
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
+%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"
+%>
+
+<c:set var="jcaPageModel" scope="page" value="${jcaPageModel}"/>
+
+<c:choose>
+  <c:when test="${jcaPageModel == null}">
+	<jca:getPageModel var="jcaPageModel" scope="page"/>
+  </c:when>
+
+  <c:otherwise>
+	<jca:updatePageModel var="jcaPageModel" scope="page"/>
+  </c:otherwise>
+</c:choose>
+
+<jca:bNotJson/>
+
+<c:if test="${nmcontext.jsp_level == 0 && !jcaPageModel.escaping}">
+  <tags:renderBeforeHeader pageModel="${jcaPageModel}"/>
+  <jca:beginWrapper/>
+  <tags:checkExecutionStatus/>
+  <c:if test="${not empty jcaPageModel.formResult}">
+	<c:catch var="formException">
+	  <jca:handleFormResult result="${jcaPageModel.formResult}" pageModel="${jcaPageModel}"/>
+	</c:catch>
+	<c:if test="${not empty formException}">
+	  <tags:renderError throwable="${formException}" pageModel="${jcaPageModel}"/>
+	</c:if>
+  </c:if>
+  <c:if test="${bNotJson}">
+	<c:set target="${nmcontext}" property="bodystart_rendered" value="${true}"/>
+	<c:if test="${ param['dynamicUpdate']!='true'}">
+	  <jca:renderMainForm pageModel="${jcaPageModel}"/>
+	</c:if>
+	<c:if test="${jcaPageModel.showHeader && !jcaPageModel.escaping}">
+	  <c:set target="${nmcontext}" property="header_rendered" value="${true}"/>
+	  <c:catch var="headerException">
+		<jca:header/>
+	  </c:catch>
+	  <c:if test="${not empty headerException}">
+		<tags:renderError throwable="${headerException}"
+						  pageModel="${jcaPageModel}"/>
+	  </c:if>
+	</c:if>
+	<c:if test="${not empty jcaPageModel.updateNavigator}">
+	  <script type="text/javascript">
+          ${jcaPageModel.updateNavigator}
+	  </script>
+	</c:if>
+  </c:if>
+</c:if>
+
+<%@include file="/netmarkets/jsp/util/beginLegacy2.jspf" %>
+
+<c:if test="${!JCA_AJAX_REQ}">
+  <% // IBM AIX does not allow one tld as part of attribute of another tld
+	if (request.getAttribute("setJSConstants") == null) {
+	  request.setAttribute("setJSConstants", Boolean.TRUE);
+	  out.write(com.ptc.jsca.JSCATableHelper.getLocalizedTableConstantsScript(localeBean.getLocale(), urlFactoryBean.getFactory(), String.valueOf(commandBean.getPageOid()), true));
+	}
+  %>
+</c:if>
+
+<% app:if (!jcaPageModel.isEscaping()) {
+  nmcontext.increaseJspLevel();
+
+  try {
+	if (!jcaPageModel.isClosingPopupDialog()) {
+	  //CONTENT_AREA comment marks the begin and end of the content area for DHTML content switching
+	  //  (for example, switching the 3rd level nav content without refreshing the page)
+%>
+<c:if test="${bNotJson}">
+  <!--CONTENT_AREA-->
+</c:if>

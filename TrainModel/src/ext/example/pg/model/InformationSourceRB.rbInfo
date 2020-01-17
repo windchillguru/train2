@@ -1,0 +1,38 @@
+ResourceInfo.class=wt.tools.resource.EnumResourceInfo
+ResourceInfo.customizable=true
+ResourceInfo.deprecated=false
+
+# Entry Format (values equal to default value are not included)
+# <key>.value=
+# <key>.comment=
+# <key>.argComment<n>=
+# <key>.constant=
+# <key>.customizable=
+# <key>.deprecated=
+# <key>.abbreviatedDisplay=
+# <key>.fullDisplay=
+# <key>.shortDescription=
+# <key>.longDescription=
+# <key>.comment=
+# <key>.order=
+# <key>.defaultValue=
+# <key>.selectable=
+
+# Entry Contents
+
+JobSite.value=JobSite
+JobSite.shortDescription=JobSite
+JobSite.order=10
+JobSite.defaultValue=true
+
+InternalRecommand.value=Internal Recommand
+InternalRecommand.shortDescription=Internal Recommand
+InternalRecommand.order=20
+
+Training.value=Training
+Training.shortDescription=Training
+Training.order=30
+
+Intern.value=Intern
+Intern.shortDescription=Intern
+Intern.order=40

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listofactions SYSTEM "actions.dtd">
+<listofactions>
+    <objecttype name="exam" class="wt.part.WTPart" resourceBundle="ext.exam.part.resource.partResource">
+        <action name="setPartStatus" ajax="row">
+            <command class="ext.exam.part.processor.SetPartStatusProcessor" method="execute"
+                     windowType="popup" url="/netmarkets/jsp/ext/exam/part/SetPartState.jsp"/>
+            <includeFilter name="PartStatusFilter"/>
+        </action>
+        <!-- wizard步骤-->
+        <action name="setPartStatusStep" hidden="true" afterJS="checkNewStatus">
+            <command url="/netmarkets/jsp/ext/exam/part/SetPartStateStep.jsp" windowType="wizard_step"/>
+        </action>
+
+        <action name="generateNumber">
+            <!--生成正式码-->
+            <command class="ext.exam.part.processor.GenerateNumberProcessor" method="execute"/>
+            <includeFilter name="GenNumberFilter"/>
+        </action>
+    </objecttype>
+
+    <!-- 文档查询 -->
+    <objecttype name="exam" resourceBundle="ext.exam.doc.resource.docResource">
+        <action name="queryDoc">
+            <command url="/netmarkets/jsp/ext/exam/doc/QueryDoc.jsp" windowType="popup"/>
+        </action>
+    </objecttype>
+
+    <!-- 导航栏测试 -->
+    <objecttype name="navigation" resourceBundle="ext.exam.doc.resource.docResource">
+        <action name="reportManagement">
+        </action>
+    </objecttype>
+
+    <objecttype name="report" resourceBundle="ext.train.report.resource.reportResource">
+        <action name="queryTopPart">
+            <command class="ext.train.report.processor.QueryTopPartProcessor" method="execute"
+                     windowType="popup" url="/netmarkets/jsp/ext/train/report/queryTopPart.jsp"/>
+        </action>
+        <!-- wizard步骤-->
+        <action name="queryTopPartStep" hidden="true" afterJS="validateFileName">
+            <command url="/netmarkets/jsp/ext/train/report/queryTopPartStep.jsp" windowType="wizard_step"/>
+        </action>
+    </objecttype>
+
+    <!--导出bom报表-->
+    <objecttype name="report" resourceBundle="ext.train.report.resource.reportResource">
+        <action name="BOMPart" postloadJS="test">
+            <command class="ext.train.report.processor.BOMPartProcessor" method="execute"
+                     onClick="JCAConfirm(event,'ext.train.report.resource.reportResource.REPORT_BOMPART_TITLE')"/>
+            <includeFilter name="BOMPartFilter"/>
+        </action>
+
+    </objecttype>
+</listofactions>

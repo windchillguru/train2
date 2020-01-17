@@ -1,0 +1,4 @@
+<jsp:useBean id="createBean" class="com.ptc.core.components.beans.CreateAndEditWizBean" scope="request">
+  <jsp:setProperty name="createBean" property="request" value="${pageContext.request}"/>
+  <jsp:setProperty name="createBean" property="commandBean" value="${commandBean}"/>
+</jsp:useBean>

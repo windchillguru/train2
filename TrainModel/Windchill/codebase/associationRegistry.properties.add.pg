@@ -1,0 +1,3 @@
+#add for pg
+ext.example.pg.model.PGGroup=ext.example.pg.model.PGMemberLink
+wt.fc.WTObject=ext.example.pg.model.PGMemberLink

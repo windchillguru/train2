@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Exam/Exam.iml" filepath="$PROJECT_DIR$/Exam/Exam.iml" />
+      <module fileurl="file://C:/PISX/pi/PISX_PDM11/PISX_PDM11.iml" filepath="C:/PISX/pi/PISX_PDM11/PISX_PDM11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrainModel/TrainModel.iml" filepath="$PROJECT_DIR$/TrainModel/TrainModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn/learn.iml" filepath="$PROJECT_DIR$/learn/learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task/task.iml" filepath="$PROJECT_DIR$/task/task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task1/task1.iml" filepath="$PROJECT_DIR$/task1/task1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test1/test1.iml" filepath="$PROJECT_DIR$/test1/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/train2.iml" filepath="$PROJECT_DIR$/train2.iml" />
+    </modules>
+  </component>
+</project>

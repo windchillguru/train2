@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7792bc47-951d-40ad-a8ae-db7ad529706f" name="192.168.238.32" url="http://192.168.238.32:8989/">
+        <fileTransfer host="192.168.238.32" port="8989">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="8989" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

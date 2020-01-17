@@ -1,0 +1,31 @@
+<% // variable nmobject must be defined to include this file%><%
+  //
+%>
+<%@ page import="com.ptc.netmarkets.util.misc.NetmarketURL"
+%>
+<%@ page import="com.ptc.netmarkets.util.misc.NmAction"
+%>
+<%@ page import="com.ptc.netmarkets.model.NmNamed"
+%>
+<%
+  //
+
+  try {
+
+%><A
+	HREF="<%=NetmarketURL.buildURL (urlFactoryBean, "object", NmAction.Command.VIEW, nmobject.getOid())%>"><%=((NmNamed) nmobject).getName()%>
+</A><%
+  //
+
+} catch (Throwable t) {
+%>
+<jsp:useBean id="errorBean" class="com.ptc.netmarkets.util.beans.NmErrorBean" scope="request"/>
+<%
+  errorBean.setThrowable(t);
+%>
+<jsp:include page="/netmarkets/jsp/util/error.jsp" flush="true"/>
+<%
+	//
+	errorBean.setThrowable(null);
+  }
+%>

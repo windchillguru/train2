@@ -1,0 +1,4 @@
+<%@ include file="/netmarkets/jsp/components/getSetAttributesWizStepModels.jspf" %>
+<%@ include file="/netmarkets/jsp/components/renderAttributesTable.jspf" %>
+
+<input type="hidden" name="createType" value="${nmcontext.context.pageType}">
